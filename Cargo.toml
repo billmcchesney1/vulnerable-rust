@@ -1,11 +1,9 @@
 [package]
-name = "awesome-rust"
+name = "vulnerable-rust"
 version = "0.1.0"
 authors = []
-homepage = "https://github.com/rust-unofficial/awesome-rust"
-repository = "https://github.com/rust-unofficial/awesome-rust"
 edition = "2018"
-default-run = "awesome-rust"
+default-run = "vulnerable-rust"
 
 # FIXME: locked down versions are a workaround for https://github.com/hyperium/hyper/issues/2191
 [dependencies]
