@@ -1,0 +1,28 @@
+name: Rust
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: cargo build --verbose
+    - name: Cloud Defense Scan
+      run: |
+        curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz
+        tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz
+        chmod +x /tmp/cdefense
+        /tmp/cdefense dryrun --verbose --lang=rust --project-name=vulnerable-rust-github-pipeline --api-key=75a81a24-adfc-4bfd-8b32-7562169a9759
+    - name: Run tests
+      run: cargo test --verbose
