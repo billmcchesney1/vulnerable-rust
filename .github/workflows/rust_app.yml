@@ -24,6 +24,6 @@ jobs:
         curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz
         tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz
         chmod +x /tmp/cdefense
-        /tmp/cdefense scan --go --lang=rust --project-name=vulnerable-rust-github-workflow --api-key=75a81a24-adfc-4bfd-8b32-7562169a9759
+        /tmp/cdefense scan --go --lang=rust --project-name=vulnerable-rust-github-action --api-key=75a81a24-adfc-4bfd-8b32-7562169a9759
     - name: Run tests
       run: cargo test --verbose
