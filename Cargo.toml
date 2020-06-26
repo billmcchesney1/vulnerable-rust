@@ -1,0 +1,19 @@
+[package]
+name = "awesome-rust"
+version = "0.1.0"
+authors = []
+homepage = "https://github.com/rust-unofficial/awesome-rust"
+repository = "https://github.com/rust-unofficial/awesome-rust"
+edition = "2018"
+default-run = "awesome-rust"
+
+# FIXME: locked down versions are a workaround for https://github.com/hyperium/hyper/issues/2191
+[dependencies]
+hyper = "=0.13.5"
+failure = "0.1"
+lazy_static = "1"
+env_logger = "0.7"
+log = "0.4"
+regex = "1"
+ammonia = "2.0.0"
+cookie = "0.7.5"
