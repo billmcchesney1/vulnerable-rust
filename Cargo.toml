@@ -1,17 +1,12 @@
 [package]
 name = "vulnerable-rust"
 version = "0.1.0"
-authors = []
+authors = ["Prash G <prash@clouddefense.ai>"]
 edition = "2018"
-default-run = "vulnerable-rust"
 
-# FIXME: locked down versions are a workaround for https://github.com/hyperium/hyper/issues/2191
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
 [dependencies]
 hyper = "=0.13.5"
 failure = "0.1"
-lazy_static = "1"
-env_logger = "0.7"
-log = "0.4"
-regex = "1"
 ammonia = "2.0.0"
-cookie = "0.7.5"
