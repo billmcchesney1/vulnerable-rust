@@ -12,9 +12,7 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build
@@ -25,6 +23,15 @@ jobs:
       run: |
         curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz
         tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
-        /tmp/cdefense scan --verbose --lang=rust --project-name=vulnerable-rust-github-action --api-key=${{ secrets.CD_API_KEY }}
+        /tmp/cdefense scan --lang=rust --quiet --project-name=vulnerable-rust-github-action --api-key=${{ secrets.CD_API_KEY }}
+    - name: Run tests
+      run: cargo test --verbose
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
