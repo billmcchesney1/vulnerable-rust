@@ -20,10 +20,11 @@ jobs:
     - name: Build
       run: cargo build --verbose
     - name: Cloud Defense Scan
+      env:
+        SCA_SCAN_URL: https://cd-scanner.herokuapp.com/processAndSave
       run: |
         curl https://raw.githubusercontent.com/CloudDefenseAI/cd/master/latest/cd-latest-linux-x64.tar.gz > /tmp/cd-latest-linux-x64.tar.gz
-        tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz
-        chmod +x /tmp/cdefense
-        /tmp/cdefense scan --go --lang=rust --project-name=vulnerable-rust-github-action --api-key=${{ secrets.CD_API_KEY }}
+        tar -C /tmp -xzf /tmp/cd-latest-linux-x64.tar.gz && chmod +x /tmp/cdefense
+        /tmp/cdefense scan --verbose --lang=rust --project-name=vulnerable-rust-github-action --api-key=${{ secrets.CD_API_KEY }}
     - name: Run tests
       run: cargo test --verbose
