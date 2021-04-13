@@ -1,4 +1,4 @@
-[package]
+[package] 
 name = "vulnerable-rust"
 version = "0.1.0"
 authors = ["Prash G <prash@clouddefense.ai>"]
